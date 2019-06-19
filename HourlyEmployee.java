@@ -17,13 +17,16 @@ public class HourlyEmployee extends Employee {
     int hours;
     //double weeklyPay;
 
-    public HourlyEmployee(String name, String type, double hourlyPay, int hours) {
-        super(name, type);
+    public HourlyEmployee(String name, double hourlyPay, int hours) {
+        super(name);
         setHourlyPay(hourlyPay);
         setHours(hours);
     }
-
-    public double getHourlyPay() {
+//getter and setter are not always needed, these are for outsider to do setting,
+//they can be regarded as a inspection line, check how outsider set and get  
+//public parameter is not a good way to let outsider access the class, 
+//that they can easily type class.paramete to know the design of class
+    public double getHourlyPay() { 
         return hourlyPay;
     }
 
@@ -43,16 +46,21 @@ public class HourlyEmployee extends Employee {
         double doublePay = 0;
         if (hours > 40) {
             doublePay = hourlyPay * 2 * (hours - 40);
-            weeklyPay = round(hourlyPay * 40 + doublePay);
+            return round(hourlyPay * 40 + doublePay);
         } else {
-            weeklyPay = round(hourlyPay * hours);
+            return round(hourlyPay * hours);
         }
-        return weeklyPay;
 
     }
     @Override
     public String toString() {
-        return String.format("%-15s%-15s%-15d%-15s$%-14.2f$%-15.2f",getName(), getType(), getHours()," ",getHourlyPay(), getWeeklyPay()) ;
+        return String.format("%-15s%-15s%-15d%-15s$%-14.2f$%-15.2f",getName(), "HourlyEmplyee", getHours()," ",getHourlyPay(), getWeeklyPay()) ;
+    }
+
+    @Override
+    public double getPayment() {
+        return getWeeklyPay();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -15,8 +15,8 @@ public class CommissionedEmployee extends Employee{
     double sales;
     //double weeklyPay;
     
-    public CommissionedEmployee(String name, String type, double sales) {
-        super(name, type);
+    public CommissionedEmployee(String name, double sales) {
+        super(name);
         setSales(sales);
         
     }
@@ -30,14 +30,19 @@ public class CommissionedEmployee extends Employee{
     }
 
     public double getWeeklyPay() {
-        weeklyPay = round(sales*20/100);
-        return weeklyPay;
+        return round(sales*20/100);
     }
     
     @Override
     public String toString() {
-        return String.format("%-15s%-15s%-15s$%-15.2f%-14s$%-15.2f", getName() ,getType(), " ", getSales(), " ", getWeeklyPay());
+        return String.format("%-15s%-15s%-15s$%-15.2f%-14s$%-15.2f", getName(), "Commissioned", " ", getSales(), " ", getWeeklyPay());
         //return String.format(name + " " +type + " " + sales +" "+ getWeeklyPay()) ;
+    }
+
+    @Override
+    public double getPayment() {
+        return getWeeklyPay();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    

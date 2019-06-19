@@ -11,17 +11,13 @@ import java.util.Scanner;
  *
  * @author jasminelin
  */
-public class Employee {
+public abstract class Employee {
     String name;
-    String type;
-    double weeklyPay;
  
-    
-    
+public abstract double getPayment();   
 
-public Employee(String name, String type){
+public Employee(String name){
     this.name = name;
-    this.type = type;
 
 }
 
@@ -33,13 +29,6 @@ public Employee(String name, String type){
         this.name = name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
 
 }

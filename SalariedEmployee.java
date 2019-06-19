@@ -13,17 +13,17 @@ import static java.lang.Math.round;
  */
 public class SalariedEmployee extends Employee {
 
-    //Double weeklyPay;
+    double weeklyPay;
     String bonus;
 
-    public SalariedEmployee(String name, String type, double weeklyPay,String bonus) {
-        super(name, type);
+    public SalariedEmployee(String name, double weeklyPay,String bonus) {
+        super(name);
         setWeeklyPay(weeklyPay);
         setBonus(bonus);
     }
 
-    public Double getWeeklyPay() {
-        return weeklyPay;
+    public double getWeeklyPay() {
+        return round(weeklyPay*100)/100;
     }
 
     public void setWeeklyPay(Double weeklyPay) {
@@ -41,8 +41,14 @@ public class SalariedEmployee extends Employee {
 
     @Override
     public String toString() {
-        return String.format("%-15s%-15s%-15s%-15s%-15s$%.2f%s", getName(), getType(), " ", " ", " ", getWeeklyPay(), getBonus());
+        return String.format("%-15s%-15s%-15s%-15s%-15s$%.2f%s", getName(), "Salaried", " ", " ", " ", getWeeklyPay(), getBonus());
         
+    }
+
+    @Override
+    public double getPayment() {
+        return getWeeklyPay();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    

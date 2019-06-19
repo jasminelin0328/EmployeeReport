@@ -33,10 +33,10 @@ public class EmployeePayReport {
                 if (answer.equals("y")) {
 
                     weeklyPay = weeklyPay * 1.1;
-                    SalariedEmployee emp = new SalariedEmployee(name, "Salaried", weeklyPay, "*");
+                    SalariedEmployee emp = new SalariedEmployee(name, weeklyPay, "*");
                     report[i] = emp;
                 } else {
-                    SalariedEmployee emp = new SalariedEmployee(name, "Salaried", weeklyPay, "");
+                    SalariedEmployee emp = new SalariedEmployee(name, weeklyPay, "");
                     report[i] = emp;
                 }
             } else if (type == 2) {
@@ -44,12 +44,12 @@ public class EmployeePayReport {
                 double hourlyPay = in.nextDouble();
                 System.out.print("Hours: ");
                 int hours = in.nextInt();
-                HourlyEmployee emp = new HourlyEmployee(name, "Hourly", hourlyPay, hours);//why need (int)
+                HourlyEmployee emp = new HourlyEmployee(name, hourlyPay, hours);
                 report[i] = emp;
             } else if (type == 3) {
                 System.out.print("Sales: ");
                 double sales = in.nextDouble();
-                CommissionedEmployee emp = new CommissionedEmployee(name, "Commissioned", sales);
+                CommissionedEmployee emp = new CommissionedEmployee(name, sales);
                 report[i] = emp;
             }
 
@@ -60,7 +60,7 @@ public class EmployeePayReport {
         double total = 0;
         for (int i = 0; i < report.length; i++) {
             System.out.println(report[i]);
-            total = total + report[i].weeklyPay;
+            total = total + report[i].getPayment();
         }
         System.out.println("=======================================================================================");
         System.out.printf("Total $%.2f%n", total);
